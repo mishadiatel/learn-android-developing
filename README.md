@@ -1,1 +1,1 @@
-# this is an example of how i taught android programming
+# this is an example of how I learn android programming
