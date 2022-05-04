@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Рандом</string>
+    <string name="yes_no">Да-Нет</string>
+    <string name="rundomnumber">Числа</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="error">Необходимо указать диапазон чисел от меньшего к большему</string>
+</resources>
