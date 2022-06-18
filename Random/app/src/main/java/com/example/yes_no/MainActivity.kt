@@ -5,7 +5,9 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.yes_no.databinding.ActivityMainBinding
 import java.util.concurrent.ThreadLocalRandom
@@ -33,17 +35,15 @@ class MainActivity : AppCompatActivity() {
             when {
                 fnum < lnum -> {
                     val count = ThreadLocalRandom.current().nextInt(fnum, lnum+1)
-                    binding.tvRandom.text = count.toString()   
+                    binding.tvRandom.text = count.toString()
                 }
                 fnum == lnum ->{
                     binding.tvRandom.text = fnum.toString()
                 }
                 else -> {
                     Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
-
                 }
             }
-
         }
     }
     @SuppressLint("ResourceAsColor")
@@ -97,5 +97,22 @@ class MainActivity : AppCompatActivity() {
         lnum--
         binding.lnumb.text = lnum.toString()
     }
+
+    override fun onSaveInstanceState(outState: Bundle) = with(binding) {
+        outState.run {
+            putString("tvRandom", tvRandom.text.toString())
+            putString("lnumb", lnumb.text.toString())
+            putString("fnumb", fnumb.text.toString())
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) = with(binding) {
+        super.onRestoreInstanceState(savedInstanceState)
+        tvRandom.text = savedInstanceState.getString("tvRandom")
+        lnumb.text = savedInstanceState.getString("lnumb")
+        fnumb.text = savedInstanceState.getString("fnumb")
+    }
+    
 
 }
