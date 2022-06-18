@@ -29,25 +29,17 @@ class MainActivity : AppCompatActivity() {
             val count = Random.nextBoolean()
             if (count) binding.tvRandom.text = getString(R.string.yes)
             else binding.tvRandom.text = getString(R.string.no)
-            binding.tvRandom.setTextColor(Color.WHITE)
-            binding.tvRandom.textSize = 30f
         }else{
             when {
                 fnum < lnum -> {
                     val count = ThreadLocalRandom.current().nextInt(fnum, lnum+1)
-                    binding.tvRandom.setTextColor(Color.WHITE)
-                    binding.tvRandom.text = count.toString()
-                    binding.tvRandom.textSize = 30f
+                    binding.tvRandom.text = count.toString()   
                 }
                 fnum == lnum ->{
                     binding.tvRandom.text = fnum.toString()
-                    binding.tvRandom.setTextColor(Color.WHITE)
-                    binding.tvRandom.textSize = 30f
                 }
                 else -> {
-                    binding.tvRandom.text = getString(R.string.error)
-                    binding.tvRandom.setTextColor(Color.RED)
-                    binding.tvRandom.textSize = 15f
+                    Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
 
                 }
             }
