@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bc = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(bc.root)
+        setContentView(bc.root)         
 
         bc.b0.setOnClickListener { setTestFields("0") }
         bc.b1.setOnClickListener { setTestFields("1") }
