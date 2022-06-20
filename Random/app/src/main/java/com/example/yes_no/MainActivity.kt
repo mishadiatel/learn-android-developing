@@ -2,6 +2,7 @@ package com.example.yes_no
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.example.yes_no.databinding.ActivityMainBinding
@@ -10,13 +11,15 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    var fnum: Int = 0
-    var lnum: Int = 0
-    var bool: Boolean? = null
+    private var fnum: Int = 0
+    private var lnum: Int = 0
+    private var bool: Boolean? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.app_name)
         binding.bNav?.selectedItemId = R.id.btnyasno1
         binding.bNav?.setOnNavigationItemSelectedListener {
             when(it.itemId){
@@ -103,5 +106,12 @@ class MainActivity : AppCompatActivity() {
         tvRandom.text = savedInstanceState.getString("tvRandom")
         lnumb.text = savedInstanceState.getString("lnumb")
         fnumb.text = savedInstanceState.getString("fnumb")
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> finish()
+        }
+        return true
     }
 }
