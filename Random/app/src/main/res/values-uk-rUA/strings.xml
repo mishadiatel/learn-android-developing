@@ -5,5 +5,6 @@
     <string name="no">Ні</string>
     <string name="yes_no">Так-Ні</string>
     <string name="rundomnumber">Числа</string>
+    <string name="randomcolor">Колір</string>
     <string name="app_name">Рандом</string>
 </resources>

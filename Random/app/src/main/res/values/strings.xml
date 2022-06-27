@@ -5,4 +5,5 @@
     <string name="error">The range of numbers from smaller to larger must be specified</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="randomcolor">Color</string>
 </resources>

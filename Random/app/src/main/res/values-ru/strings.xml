@@ -5,5 +5,6 @@
     <string name="rundomnumber">Числа</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+    <string name="randomcolor">Цвет</string>
     <string name="error">Необходимо указать диапазон чисел от меньшего к большему</string>
 </resources>

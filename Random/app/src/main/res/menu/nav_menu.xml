@@ -9,7 +9,13 @@
     <item
         android:id="@+id/btnrandomnum1"
         android:title="@string/rundomnumber"
-        android:icon="@drawable/ic_num"
+        android:icon="@drawable/ic_numbers"
+        android:orderInCategory="2"
+        />
+    <item
+        android:id="@+id/btncolor"
+        android:title="@string/randomcolor"
+        android:icon="@drawable/ic_color"
         android:orderInCategory="2"
         />
 

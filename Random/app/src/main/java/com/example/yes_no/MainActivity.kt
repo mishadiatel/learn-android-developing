@@ -1,5 +1,7 @@
 package com.example.yes_no
 
+
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -13,18 +15,19 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private var fnum: Int = 0
     private var lnum: Int = 0
-    private var bool: Boolean? = null
+    private var bool: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.app_name)
+
         binding.bNav?.selectedItemId = R.id.btnyasno1
         binding.bNav?.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.btnyasno1 -> {
-                    bool = true
+                    bool = 1
                     binding.apply {
                         tvRandom.text = ""
                         button.visibility = View.VISIBLE
@@ -34,10 +37,11 @@ class MainActivity : AppCompatActivity() {
                         btn2plus.visibility = View.INVISIBLE
                         lnumb.visibility = View.INVISIBLE
                         fnumb.visibility = View.INVISIBLE
+                        backgroundColor?.visibility = View.INVISIBLE
                     }
                 }
                 R.id.btnrandomnum1 ->{
-                    bool = false
+                    bool = 2
                     binding.apply {
                         tvRandom.text = ""
                         button.visibility = View.VISIBLE
@@ -47,6 +51,21 @@ class MainActivity : AppCompatActivity() {
                         btn2plus.visibility = View.VISIBLE
                         lnumb.visibility = View.VISIBLE
                         fnumb.visibility = View.VISIBLE
+                        backgroundColor?.visibility = View.INVISIBLE
+                    }
+                }
+                R.id.btncolor ->{
+                    bool = 3
+                    binding.apply {
+                        tvRandom.text = ""
+                        button.visibility = View.VISIBLE
+                        btn1min.visibility = View.INVISIBLE
+                        btn1plus.visibility = View.INVISIBLE
+                        btn2min.visibility = View.INVISIBLE
+                        btn2plus.visibility = View.INVISIBLE
+                        lnumb.visibility = View.INVISIBLE
+                        fnumb.visibility = View.INVISIBLE
+                        backgroundColor?.visibility = View.VISIBLE
                     }
                 }
             }
@@ -55,11 +74,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun random(view: View){
-        if (bool == true){
+        if (bool == 1){
             val count = Random.nextBoolean()
             if (count) binding.tvRandom.text = getString(R.string.yes)
             else binding.tvRandom.text = getString(R.string.no)
-        }else{
+        }else if (bool == 2){
             when {
                 fnum < lnum -> {
                     val count = ThreadLocalRandom.current().nextInt(fnum, lnum+1)
@@ -72,6 +91,11 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+        else if (bool == 3){
+            val rnd = Random.Default
+            val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+            binding.backgroundColor?.setBackgroundColor(color)
         }
     }
     fun onClickBtn1plus(view: View){
