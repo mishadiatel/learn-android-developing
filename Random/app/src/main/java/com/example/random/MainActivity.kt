@@ -1,4 +1,4 @@
-package com.example.yes_no
+package com.example.random
 
 
 import android.graphics.Color
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.example.yes_no.R
 import com.example.yes_no.databinding.ActivityMainBinding
 import java.util.concurrent.ThreadLocalRandom
 import kotlin.random.Random

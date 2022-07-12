@@ -1,4 +1,4 @@
-package com.example.yes_no
+package com.example.random
 
 import org.junit.Test
 
