@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         setContentView(R.layout.activity_main)
         manager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
-
+    // onResume
     override fun onResume() {
         super.onResume()
         manager?.registerListener(this, manager?.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME)
     }
-
+    //onPause
     override fun onPause() {
         super.onPause()
         manager?.unregisterListener(this)
@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
 
+    // Sensor changed
     override fun onSensorChanged(p0: SensorEvent?) {
         val degree: Int = p0?.values?.get(0)?.toInt()!!
         var tvDegree = findViewById<TextView>(R.id.tvDegree)
